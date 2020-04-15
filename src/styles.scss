@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+.center {
+	text-align: center;
+}
+.specimen-image {
+	width: 22em;
+	height: 34em;
+	background: black;
+}
+.specimen-image img {
+	width: 100%;
+	height: auto;
+}
+.specimen-image-center {
+	@extend .specimen-image;
+	text-align: center;
+}
+.specimen-image-framed {
+	@extend .specimen-image;
+	border-width: 0.22em;
+	border-color: black;
+	border-style: solid;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

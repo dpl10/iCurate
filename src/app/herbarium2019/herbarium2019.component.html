@@ -1,0 +1,64 @@
+<h2>The ResNet50 <a href="https://www.kaggle.com/c/herbarium-2019-fgvc6" target="_blank">Herbarium2019</a> challenge entry from <a href="https://arxiv.org/abs/1906.06423" target="_blank">Touvron et al. (2019)</a>.</h2>
+<div class="p-grid">
+	<div class="p-col-8">
+		<h3>upload a Melastomataceae specimen image...</h3>
+		<p-fileUpload [showUploadButton]="true" customUpload="true" (uploadHandler)="imageUploader($event)" accept="image/*" maxFileSize="52428800" auto="true">
+			<ng-template pTemplate="toolbar"></ng-template>
+			<ng-template let-file pTemplate="file"></ng-template>
+			<ng-template pTemplate="content">
+				<div class="center">
+					<div *ngIf="!imageUploaded">
+						<div class="specimen-image-framed">
+							<img src="assets/herbarium2019/specimen.jpg"/>
+						</div>
+						<p>&mdash;drag and drop here&mdash;</p>
+					</div>
+					<div class="specimen-image" *ngIf="imageUploaded">
+						<img [src]="uploadedImage"/>
+					</div>
+				</div>
+			</ng-template>
+		</p-fileUpload>
+		<p-carousel [value]="specimen" [numVisible]="2" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+			<p-header>
+				<h3>...or analyze one of these images</h3>
+			</p-header>
+			<ng-template let-specimen pTemplate="item">
+				<div>
+					<div class="specimen-image">
+						<img src="assets/herbarium2019/{{specimen.taxon}}-{{specimen.file}}.jpg"/>
+					</div>
+					<div class="specimen-data">
+						<div><i>{{formatBinomial(specimen)}}</i> {{formatAuthor(specimen)}}</div>
+					</div>
+					<p-button label="analyze" (onClick)="runNetwork(specimen)"></p-button>
+				</div>
+			</ng-template>
+		</p-carousel>
+	</div>
+	<div class="p-col-4">
+		<div *ngIf="predicted">
+			<p-dataView [value]="predictions" lazy="false" emptyMessage="no predictions generated yet...">
+				<p-header>predictions</p-header>
+				<ng-template let-prediction pTemplate="listItem">
+					<div>
+						<p-card styleClass="ui-card-shadow">
+							<p-header>
+								<div class="specimen-image">
+									<img src="assets/herbarium2019/{{prediction.taxon}}-{{prediction.file}}.jpg"/>
+								</div>
+							</p-header>
+							<div class="ui-card-subheader">
+								<i>{{formatBinomial(prediction)}}</i> {{formatAuthor(prediction)}}
+							</div>
+							<div><i>p</i> = {{prediction.probability.toFixed(4)}}</div>
+							<p-footer>
+								<p-button label="search in the virtual herbarium" (onClick)="virtualHerbarium(prediction)"></p-button>
+							</p-footer>
+						</p-card>
+					</div>
+				</ng-template>
+			</p-dataView>
+		</div>
+	</div>
+</div>

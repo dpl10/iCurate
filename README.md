@@ -1,27 +1,15 @@
-# Icurator
+# iCurate
+An Angular 9 web interface for *iCURATE*. A [live version](https://www.nybg.org/files/scientists/dlittle/icurate/) is hosted at the New York Botanical Garden.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+*iCURATE* mobilizes the plant identification models produced in the [Herbarium2019](https://www.kaggle.com/c/herbarium-2019-fgvc6) and [Herbarium2020](https://www.kaggle.com/c/herbarium-2020-fgvc7) Kaggle competitions so that botanists can easily make identifications from herbarium specimen images without needing to install or build their own neural networks.
 
-## Development server
+### install
+`npm install icurate --save`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### use
+`util/angular-dev.sh` will start a local dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+`util/angular-build.sh` will build a production version of the code for deployment.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### license
+[MIT](https://github.com/dpl10/icurate/blob/master/LICENSE)
