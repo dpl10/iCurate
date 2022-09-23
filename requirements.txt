@@ -41,7 +41,7 @@ packaging==20.9
 Pillow==9.2.0
 platformdirs==2.5.2
 prompt-toolkit==1.0.14
-protobuf==3.19.4
+protobuf==3.19.5
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 Pygments==2.13.0
